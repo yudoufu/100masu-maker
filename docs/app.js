@@ -33,6 +33,7 @@
   const elements = {
     operationButtons: [...document.querySelectorAll('#operation button')],
     themeOptions: [...document.querySelectorAll('input[name="theme"]')],
+    themeColor: document.querySelector('meta[name="theme-color"]'),
     range: document.getElementById('range'),
     gridSize: document.getElementById('gridSize'),
     difficulty: document.getElementById('difficulty'),
@@ -178,6 +179,9 @@
     input.addEventListener('change', () => {
       if (input.checked) {
         document.documentElement.dataset.theme = input.value;
+        elements.themeColor.content = getComputedStyle(document.documentElement)
+          .getPropertyValue('--background')
+          .trim();
       }
     });
   });
