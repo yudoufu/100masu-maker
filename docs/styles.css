@@ -13,9 +13,6 @@
   --accent: #497a58;
   --accent-dark: #315e40;
   --accent-hover: #3f704f;
-  --accent-soft: #eaf1e7;
-  --accent-wash: #f0f5eb;
-  --accent-border: #d6e3d3;
   --accent-pale: #f2f6ef;
   --accent-corner: #e5eee1;
   --accent-focus: #497a5818;
@@ -33,9 +30,6 @@
   --accent: #4b8294;
   --accent-dark: #315e70;
   --accent-hover: #3f7181;
-  --accent-soft: #e8f1f3;
-  --accent-wash: #eff6f8;
-  --accent-border: #d3e2e6;
   --accent-pale: #f0f6f7;
   --accent-corner: #e1edf0;
   --accent-focus: #4b829418;
@@ -53,9 +47,6 @@
   --accent: #a77c27;
   --accent-dark: #795815;
   --accent-hover: #8e681c;
-  --accent-soft: #f5efde;
-  --accent-wash: #faf6e9;
-  --accent-border: #e9dcb8;
   --accent-pale: #faf6e9;
   --accent-corner: #f1e8cd;
   --accent-focus: #a77c2718;
@@ -73,9 +64,6 @@
   --accent: #ad687f;
   --accent-dark: #80485d;
   --accent-hover: #97576d;
-  --accent-soft: #f5e9ed;
-  --accent-wash: #faf2f5;
-  --accent-border: #ecd7df;
   --accent-pale: #faf2f4;
   --accent-corner: #f2e3e9;
   --accent-focus: #ad687f18;
@@ -170,16 +158,6 @@ button {
   margin: 0;
   color: var(--muted);
   font-size: 13px;
-}
-
-.hero-stamp {
-  padding: 9px 14px;
-  border: 1px solid var(--accent-border);
-  border-radius: 50px;
-  background: var(--accent-wash);
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 700;
 }
 
 .workspace {
@@ -339,13 +317,6 @@ select:focus {
   background: #fff;
   color: var(--accent-dark);
   box-shadow: 0 1px 4px #20282018;
-}
-
-.small-note {
-  margin: 7px 0 0;
-  color: var(--muted);
-  font-size: 11px;
-  line-height: 1.6;
 }
 
 .toggle-line {
@@ -681,11 +652,6 @@ select:focus {
     display: none;
   }
 
-  .hero-stamp {
-    padding: 7px 9px;
-    font-size: 9px;
-  }
-
   .hero p {
     max-width: 260px;
     line-height: 1.7;
@@ -724,10 +690,6 @@ select:focus {
 
   .score-blank {
     width: 106px;
-  }
-
-  .math-grid {
-    grid-template-columns: repeat(var(--grid-total, 11), minmax(0, 1fr));
   }
 
   .cell {
@@ -810,7 +772,6 @@ select:focus {
 
   .math-grid {
     min-width: 0;
-    grid-template-columns: repeat(var(--grid-total, 11), minmax(0, 1fr));
     grid-template-rows: repeat(var(--grid-total, 11), var(--grid-print-row-height, 12mm));
   }
 
