@@ -144,8 +144,8 @@
 
     elements.worksheets.replaceChildren(fragment);
     elements.stageCount.textContent = state.includeAnswers
-      ? `${state.sheetCount}枚＋答え${state.sheetCount}枚 · 計${state.sheetCount * 2}枚（${state.gridSize}×${state.gridSize}ます）`
-      : `${state.sheetCount}枚 · ${state.gridSize}×${state.gridSize}ます`;
+      ? `${state.sheetCount}枚＋答え${state.sheetCount}枚 · 計${state.sheetCount * 2}枚`
+      : `${state.sheetCount}枚`;
   }
 
   function generateWorksheets() {
