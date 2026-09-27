@@ -1,0 +1,695 @@
+:root {
+  --ink: #202820;
+  --muted: #778078;
+  --green: #497a58;
+  --green-dark: #315e40;
+  --line: #dce2d8;
+  --paper: #fff;
+  --background: #f7f8f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--ink);
+  font-family: 'DM Sans', 'Noto Sans JP', sans-serif;
+  font-size: 14px;
+}
+
+button,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.shell {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px 48px;
+}
+
+.topbar {
+  height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.brandmark {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 11px;
+  background: var(--green);
+  color: #fff;
+}
+
+.brandmark svg {
+  width: 20px;
+}
+
+.top-note {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 36px 0 28px;
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 8px 0 7px;
+  font-size: clamp(25px, 3vw, 34px);
+  letter-spacing: -0.05em;
+  line-height: 1.3;
+}
+
+.hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.hero-stamp {
+  padding: 9px 14px;
+  border: 1px solid #d6e3d3;
+  border-radius: 50px;
+  background: #f0f5eb;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 310px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.panel {
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper);
+  box-shadow: 0 3px 14px #293a2710;
+}
+
+.panel h2 {
+  margin: 0 0 20px;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.field {
+  margin: 0 0 19px;
+}
+
+.field label,
+.field-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.select-wrap {
+  position: relative;
+}
+
+.select-wrap::after {
+  position: absolute;
+  top: 8px;
+  right: 13px;
+  color: #79837a;
+  content: '⌄';
+  font-size: 17px;
+  pointer-events: none;
+}
+
+select {
+  width: 100%;
+  appearance: none;
+  padding: 10px 34px 10px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  outline: none;
+  background: #fff;
+  color: var(--ink);
+}
+
+select:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px #497a5818;
+}
+
+.seg {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  padding: 4px;
+  border-radius: 9px;
+  background: #f2f4ef;
+}
+
+.seg button {
+  padding: 8px 4px;
+  border: 0;
+  border-radius: 7px;
+  background: none;
+  color: #687269;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.seg button.active {
+  background: #fff;
+  color: var(--green-dark);
+  box-shadow: 0 1px 4px #20282018;
+}
+
+.small-note {
+  margin: 7px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.toggle-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.switch {
+  width: 38px;
+  height: 22px;
+  padding: 3px;
+  border: 0;
+  border-radius: 20px;
+  background: #d8ded6;
+  transition: background 0.2s;
+}
+
+.switch::after {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px #0002;
+  content: '';
+  transition: transform 0.2s;
+}
+
+.switch.on {
+  background: var(--green);
+}
+
+.switch.on::after {
+  transform: translateX(16px);
+}
+
+.divider {
+  height: 1px;
+  margin: 19px 0;
+  background: #edf0eb;
+}
+
+.generate {
+  width: 100%;
+  padding: 12px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--green);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 3px 0 var(--green-dark);
+  transition: 0.15s;
+}
+
+.generate:hover {
+  transform: translateY(-1px);
+  background: #3f704f;
+}
+
+.generate:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.stage {
+  min-width: 0;
+}
+
+.stage-head {
+  display: flex;
+  height: 42px;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.stage-title {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+#stageCount {
+  color: #879087;
+  font-weight: 400;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  padding: 8px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: #4f5b50;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.btn:hover {
+  border-color: #9aad9a;
+  color: var(--green-dark);
+}
+
+.btn.primary {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+#printBtn {
+  padding: 12px 20px;
+  font-size: 14px;
+  box-shadow: 0 3px 0 var(--green-dark);
+}
+
+#printBtn:hover {
+  transform: translateY(-1px);
+  border-color: var(--green-dark);
+  background: var(--green-dark);
+  color: #fff;
+}
+
+#printBtn:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+.sheet {
+  position: relative;
+  min-height: 500px;
+  padding: clamp(20px, 4vw, 45px);
+  border: 1px solid #e4e8e1;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 6px 25px #2837230b;
+}
+
+.sheet + .sheet {
+  margin-top: 18px;
+}
+
+.sheet-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e5e8e2;
+}
+
+.sheet-title {
+  margin: 0 0 5px;
+  font-size: 19px;
+  letter-spacing: 0.02em;
+}
+
+.name-entry {
+  color: #545e55;
+  font-size: 13px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.name-blank {
+  display: inline-block;
+  width: 260px;
+  height: 29px;
+  margin-left: 7px;
+  border-bottom: 1px solid #9ba39a;
+  vertical-align: bottom;
+}
+
+.worksheet-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 130px;
+  gap: 20px;
+  align-items: center;
+}
+
+.grid-wrap {
+  width: min(100%, 600px);
+  margin: 0 auto;
+  overflow: auto;
+}
+
+.math-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(var(--grid-total, 11), minmax(0, 1fr));
+  grid-template-rows: repeat(var(--grid-total, 11), var(--grid-row-height, 12mm));
+  border-top: 1px solid #8e9d8c;
+  border-left: 1px solid #8e9d8c;
+}
+
+.math-grid.dense .cell {
+  font-size: 15px;
+}
+
+.math-grid.dense .cell.head {
+  font-size: 16px;
+}
+
+.cell {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #cbd3c9;
+  border-bottom: 1px solid #cbd3c9;
+  font-size: 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+.cell.head {
+  background: #f2f6ef;
+  color: #445f48;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.cell.corner {
+  background: #e5eee1;
+  color: var(--green);
+  font-size: 11px;
+}
+
+.worksheet-meta {
+  color: #545e55;
+  font-size: 16px;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.meta-field {
+  width: 100%;
+  margin-bottom: 27px;
+}
+
+.date-blank,
+.time-blank,
+.score-blank {
+  display: inline-block;
+  border-bottom: 1px solid #9ba39a;
+  vertical-align: bottom;
+}
+
+.date-blank {
+  width: 42px;
+  height: 27px;
+  margin: 0 2px;
+}
+
+.time-blank {
+  width: 42px;
+  height: 27px;
+  margin: 0 2px;
+}
+
+.score-blank {
+  width: 106px;
+  height: 29px;
+  margin-right: 2px;
+}
+
+.footer-note {
+  margin-top: 16px;
+  color: #9aa198;
+  font-size: 10px;
+  text-align: center;
+}
+
+@media (max-width: 800px) {
+  .shell {
+    padding: 0 16px 30px;
+  }
+
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 27px 0 20px;
+  }
+
+  .panel {
+    padding: 18px;
+  }
+
+  .field {
+    margin-bottom: 14px;
+  }
+
+  .settings-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0 14px;
+  }
+
+  .stage-head {
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 520px) {
+  .topbar {
+    height: 62px;
+  }
+
+  .top-note {
+    display: none;
+  }
+
+  .hero-stamp {
+    padding: 7px 9px;
+    font-size: 9px;
+  }
+
+  .hero p {
+    max-width: 260px;
+    line-height: 1.7;
+  }
+
+  .actions .btn {
+    padding: 8px;
+  }
+
+  .sheet {
+    padding: 17px 12px;
+  }
+
+  .sheet-top {
+    display: block;
+  }
+
+  .name-entry {
+    margin-top: 10px;
+  }
+
+  .worksheet-layout {
+    grid-template-columns: minmax(0, 1fr) 124px;
+    gap: 8px;
+  }
+
+  .worksheet-meta {
+    font-size: 11px;
+  }
+
+  .date-blank,
+  .time-blank {
+    width: 42px;
+    margin: 0 2px;
+  }
+
+  .score-blank {
+    width: 106px;
+  }
+
+  .math-grid {
+    grid-template-columns: repeat(var(--grid-total, 11), minmax(0, 1fr));
+  }
+
+  .cell {
+    font-size: 11px;
+  }
+}
+
+@page {
+  size: A4 landscape;
+  margin: 5mm;
+}
+
+@media print {
+  body {
+    background: #fff;
+  }
+
+  .shell {
+    max-width: none;
+    padding: 0;
+  }
+
+  .topbar,
+  .hero,
+  .panel,
+  .stage-head,
+  .footer-note {
+    display: none !important;
+  }
+
+  .workspace,
+  .stage {
+    display: block;
+    width: 100%;
+  }
+
+  .sheet {
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .sheet + .sheet {
+    margin-top: 0;
+    break-before: page;
+    page-break-before: always;
+  }
+
+  .sheet-top {
+    margin-bottom: 5mm;
+    padding-bottom: 3mm;
+  }
+
+  .sheet-title {
+    font-size: 16pt;
+  }
+
+  .name-entry {
+    font-size: 12pt;
+  }
+
+  .name-blank {
+    width: 55mm;
+    height: 9mm;
+  }
+
+  .worksheet-layout {
+    grid-template-columns: 218mm 59mm;
+    gap: 10mm;
+    align-items: center;
+  }
+
+  .grid-wrap {
+    width: 218mm;
+    max-width: 218mm;
+    overflow: visible;
+  }
+
+  .math-grid {
+    min-width: 0;
+    grid-template-columns: repeat(var(--grid-total, 11), minmax(0, 1fr));
+    grid-template-rows: repeat(var(--grid-total, 11), var(--grid-print-row-height, 12mm));
+  }
+
+  .math-grid.dense .cell,
+  .math-grid.dense .cell.head {
+    font-size: 12pt;
+  }
+
+  .cell {
+    font-size: 18pt;
+  }
+
+  .cell.head {
+    font-size: 18pt;
+  }
+
+  .worksheet-meta {
+    font-size: 15pt;
+  }
+
+  .meta-field {
+    width: 55mm;
+    margin-bottom: 22mm;
+  }
+
+  .date-blank,
+  .time-blank {
+    width: 20mm;
+    height: 10mm;
+    margin: 0 1mm;
+  }
+
+  .score-blank {
+    width: 48mm;
+    height: 10mm;
+    margin-right: 1mm;
+  }
+}
