@@ -23,4 +23,4 @@
 
 このプロジェクトはMIT Licenseのもとで公開しています。詳細は[LICENSE](LICENSE)を参照してください。
 
-Copyright (c) 2026 Daichi Kamemoto
+Copyright (c) 2026 yudoufu

@@ -478,6 +478,21 @@ select:focus {
   margin-right: 2px;
 }
 
+.sheet-copyright {
+  display: none;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  text-align: right;
+}
+
+.site-footer {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 11px;
+  text-align: center;
+}
+
 .footer-note {
   margin-top: 16px;
   color: #9aa198;
@@ -598,7 +613,8 @@ select:focus {
   .hero,
   .panel,
   .stage-head,
-  .footer-note {
+  .footer-note,
+  .site-footer {
     display: none !important;
   }
 
@@ -673,6 +689,12 @@ select:focus {
 
   .worksheet-meta {
     font-size: 15pt;
+  }
+
+  .sheet-copyright {
+    display: block;
+    margin-top: 2mm;
+    font-size: 8pt;
   }
 
   .meta-field {
