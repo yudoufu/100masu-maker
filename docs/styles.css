@@ -580,6 +580,9 @@ select:focus {
 }
 
 .worksheet-meta {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
   color: #545e55;
   font-size: 16px;
   text-align: right;
@@ -588,7 +591,13 @@ select:focus {
 
 .meta-field {
   width: 100%;
-  margin-bottom: 27px;
+}
+
+.meta-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 27px;
+  margin-top: auto;
 }
 
 .date-blank,
@@ -629,13 +638,6 @@ select:focus {
   margin-top: 28px;
   color: var(--muted);
   font-size: 11px;
-  text-align: center;
-}
-
-.footer-note {
-  margin-top: 16px;
-  color: #9aa198;
-  font-size: 10px;
   text-align: center;
 }
 
@@ -752,7 +754,6 @@ select:focus {
   .hero,
   .panel,
   .stage-head,
-  .footer-note,
   .site-footer {
     display: none !important;
   }
@@ -838,7 +839,10 @@ select:focus {
 
   .meta-field {
     width: 55mm;
-    margin-bottom: 22mm;
+  }
+
+  .meta-bottom {
+    gap: 22mm;
   }
 
   .date-blank,

@@ -130,7 +130,7 @@
         <div class="stage-head">
           <div class="stage-title">プレビュー <span id="stageCount">1枚 · 10×10ます</span></div>
           <div class="actions">
-            <button class="btn primary" id="printBtn" type="button">印刷する ↗</button>
+            <button class="btn primary" id="printBtn" type="button">印刷(横向き推奨)</button>
           </div>
         </div>
         <div id="sheets"></div>
@@ -146,14 +146,15 @@
               </div>
               <aside class="worksheet-meta" aria-label="記入欄">
                 <div class="meta-field"><span class="date-blank"></span>月<span class="date-blank"></span>日</div>
-                <div class="meta-field"><span class="time-blank"></span>分<span class="time-blank"></span>秒</div>
-                <div class="meta-field"><span class="score-blank"></span>点</div>
+                <div class="meta-bottom">
+                  <div class="meta-field"><span class="time-blank"></span>分<span class="time-blank"></span>秒</div>
+                  <div class="meta-field"><span class="score-blank"></span>点</div>
+                </div>
               </aside>
             </div>
             <footer class="sheet-copyright">© 2026 yudoufu</footer>
           </article>
         </template>
-        <p class="footer-note">A4横向きで印刷するときれいに出力できます</p>
       </section>
     </main>
     <footer class="site-footer">© 2026 yudoufu</footer>
