@@ -4,7 +4,7 @@
 
 ## 使い方
 
-`index.html`をブラウザで開き、計算の種類や数字の範囲、表の大きさなどを選びます。「新しい問題をつくる」でプリントを作成し、「印刷する」から印刷できます。
+`docs/index.html`をブラウザで開き、計算の種類や数字の範囲、表の大きさなどを選びます。「新しい問題をつくる」でプリントを作成し、「印刷する」から印刷できます。
 
 「答えもつくる」をオンにすると、問題プリントの後に同じ問題の答えプリントが続きます。各問題と答えには対応するNo.が付きます。
 
@@ -18,6 +18,20 @@
 - 答えプリント：オン／オフ
 
 ひき算では、上の見出し数字に10を加えて、答えが負の数にならない問題を作ります。印刷はA4横向きに最適化しています。
+
+## GitHub Pagesで公開する場合
+
+Webサイト用のファイルは`docs/`にまとめています。GitHub Pagesの公開元を`main`ブランチの`/docs`にすると、このフォルダの中身だけがサイトとして配信されます。リポジトリ直下のREADMEやLICENSEはサイトに含まれません。
+
+1. この変更を`main`ブランチにマージします。
+2. GitHubでリポジトリの **Settings → Pages** を開きます。
+3. **Build and deployment** のSourceで **Deploy from a branch** を選びます。
+4. Branchを`main`、フォルダを`/docs`にして保存します。
+5. 以降、`main`の`docs/`内に加えた変更が公開されます。
+
+このアプリは静的ファイルだけで動くため、ビルドコマンドや追加の依存関係は不要です。設定方法の詳細は[GitHub Pages公式ドキュメント](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)を参照してください。
+
+GitHub Freeでは公開リポジトリが必要で、公開されたサイトは誰でも閲覧できます。
 
 ## ライセンス
 
