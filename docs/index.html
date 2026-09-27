@@ -31,7 +31,7 @@
       <div>
         <div class="eyebrow">WORKSHEET MAKER</div>
         <h1>100ます計算プリント</h1>
-        <p>数字と計算の種類を選ぶだけ。必要な枚数をまとめて作れます。</p>
+        <p>数字と計算の種類を選ぶだけ。必要な枚数をまとめて作れます。数字を入れ替えて、何度でも新しい問題を作成できます。</p>
       </div>
       <div class="hero-stamp">無料 · 登録不要 · すぐ印刷</div>
     </section>
@@ -48,6 +48,27 @@
               <button type="button" data-op="multiply" aria-pressed="false">かけ算</button>
             </div>
           </div>
+          <fieldset class="field theme-field">
+            <legend class="field-label">プリントの色</legend>
+            <div class="theme-options" role="radiogroup" aria-label="プリントの色">
+              <label class="theme-choice">
+                <input type="radio" name="theme" value="green" aria-label="緑" checked>
+                <span class="theme-swatch theme-swatch-green" aria-hidden="true"></span>
+              </label>
+              <label class="theme-choice">
+                <input type="radio" name="theme" value="blue" aria-label="水色">
+                <span class="theme-swatch theme-swatch-blue" aria-hidden="true"></span>
+              </label>
+              <label class="theme-choice">
+                <input type="radio" name="theme" value="yellow" aria-label="黄色">
+                <span class="theme-swatch theme-swatch-yellow" aria-hidden="true"></span>
+              </label>
+              <label class="theme-choice">
+                <input type="radio" name="theme" value="pink" aria-label="ピンク">
+                <span class="theme-swatch theme-swatch-pink" aria-hidden="true"></span>
+              </label>
+            </div>
+          </fieldset>
           <div class="field">
             <label for="range">数字の範囲</label>
             <div class="select-wrap">
@@ -101,7 +122,6 @@
           <span id="answerToggleLabel">答えもつくる</span>
           <button class="switch" id="answerToggle" type="button" role="switch" aria-checked="false" aria-labelledby="answerToggleLabel"></button>
         </div>
-        <p class="small-note">数字を入れ替えて、何度でも新しい問題を作成できます。</p>
         <div class="divider"></div>
         <button class="generate" id="generate" type="button">新しい問題をつくる　↗</button>
       </aside>

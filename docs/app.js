@@ -32,6 +32,7 @@
 
   const elements = {
     operationButtons: [...document.querySelectorAll('#operation button')],
+    themeOptions: [...document.querySelectorAll('input[name="theme"]')],
     range: document.getElementById('range'),
     gridSize: document.getElementById('gridSize'),
     difficulty: document.getElementById('difficulty'),
@@ -171,6 +172,14 @@
 
   elements.operationButtons.forEach((button) => {
     button.addEventListener('click', () => selectOperation(button));
+  });
+
+  elements.themeOptions.forEach((input) => {
+    input.addEventListener('change', () => {
+      if (input.checked) {
+        document.documentElement.dataset.theme = input.value;
+      }
+    });
   });
 
   elements.range.addEventListener('change', (event) => {
