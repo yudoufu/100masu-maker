@@ -24,12 +24,10 @@
     operation: 'add',
     numberLimit: 9,
     order: 'random',
-    includeAnswers: false,
     sheetCount: 1,
     gridSize: 10,
     worksheets: [],
   };
-
   const elements = {
     operationButtons: [...document.querySelectorAll('#operation button')],
     themeOptions: [...document.querySelectorAll('input[name="theme"]')],
@@ -38,9 +36,9 @@
     gridSize: document.getElementById('gridSize'),
     difficulty: document.getElementById('difficulty'),
     copies: document.getElementById('copies'),
-    answerToggle: document.getElementById('answerToggle'),
     generateButton: document.getElementById('generate'),
-    printButton: document.getElementById('printBtn'),
+    printQuestionsButton: document.getElementById('printQuestionsBtn'),
+    printAnswersButton: document.getElementById('printAnswersBtn'),
     stageCount: document.getElementById('stageCount'),
     worksheets: document.getElementById('sheets'),
     sheetTemplate: document.getElementById('sheetTemplate'),
@@ -99,7 +97,6 @@
     );
     grid.style.setProperty('--grid-total', gridTotal);
     grid.style.setProperty('--grid-row-height', `${rowHeight}mm`);
-    grid.style.setProperty('--grid-print-row-height', `${rowHeight}mm`);
     grid.classList.toggle('dense', state.gridSize > 12);
     grid.append(createCell('corner', operation.symbol));
 
@@ -126,6 +123,7 @@
 
     title.textContent = `${operation.label} ${state.gridSize}×${state.gridSize}ます計算　${isAnswer ? '答え ' : ''}No. ${worksheetNumber}`;
     sheet.setAttribute('aria-label', title.textContent);
+    sheet.classList.add(isAnswer ? 'answer-sheet' : 'question-sheet');
     buildGrid(sheet, worksheet, worksheetNumber, isAnswer);
     return sheet;
   }
@@ -137,16 +135,8 @@
       fragment.append(buildSheet(worksheet, index, false));
     });
 
-    if (state.includeAnswers) {
-      state.worksheets.forEach((worksheet, index) => {
-        fragment.append(buildSheet(worksheet, index, true));
-      });
-    }
-
     elements.worksheets.replaceChildren(fragment);
-    elements.stageCount.textContent = state.includeAnswers
-      ? `${state.sheetCount}枚＋答え${state.sheetCount}枚 · 計${state.sheetCount * 2}枚`
-      : `${state.sheetCount}枚`;
+    elements.stageCount.textContent = `${state.sheetCount}枚`;
   }
 
   function generateWorksheets() {
@@ -164,11 +154,24 @@
     generateWorksheets();
   }
 
-  function setAnswerOption(enabled) {
-    state.includeAnswers = enabled;
-    elements.answerToggle.classList.toggle('on', enabled);
-    elements.answerToggle.setAttribute('aria-checked', String(enabled));
-    renderWorksheets();
+  function printWorksheets(mode) {
+    if (mode === 'answers') {
+      const fragment = document.createDocumentFragment();
+      state.worksheets.forEach((worksheet, index) => {
+        const answerSheet = buildSheet(worksheet, index, true);
+        answerSheet.classList.add('temporary-print-sheet');
+        fragment.append(answerSheet);
+      });
+      elements.worksheets.append(fragment);
+    }
+
+    document.documentElement.dataset.printMode = mode;
+    window.print();
+  }
+
+  function finishPrinting() {
+    delete document.documentElement.dataset.printMode;
+    elements.worksheets.querySelectorAll('.temporary-print-sheet').forEach((sheet) => sheet.remove());
   }
 
   elements.operationButtons.forEach((button) => {
@@ -206,12 +209,10 @@
     generateWorksheets();
   });
 
-  elements.answerToggle.addEventListener('click', () => {
-    setAnswerOption(!state.includeAnswers);
-  });
-
   elements.generateButton.addEventListener('click', generateWorksheets);
-  elements.printButton.addEventListener('click', () => window.print());
+  elements.printQuestionsButton.addEventListener('click', () => printWorksheets('questions'));
+  elements.printAnswersButton.addEventListener('click', () => printWorksheets('answers'));
+  window.addEventListener('afterprint', finishPrinting);
 
   generateWorksheets();
 })();
