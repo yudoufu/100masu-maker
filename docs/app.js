@@ -28,8 +28,6 @@
     gridSize: 10,
     worksheets: [],
   };
-  let temporaryAnswerSheets = false;
-
   const elements = {
     operationButtons: [...document.querySelectorAll('#operation button')],
     themeOptions: [...document.querySelectorAll('input[name="theme"]')],
@@ -98,7 +96,6 @@
     );
     grid.style.setProperty('--grid-total', gridTotal);
     grid.style.setProperty('--grid-row-height', `${rowHeight}mm`);
-    grid.style.setProperty('--grid-print-row-height', `${rowHeight}mm`);
     grid.classList.toggle('dense', state.gridSize > 12);
     grid.append(createCell('corner', operation.symbol));
 
@@ -165,7 +162,6 @@
         fragment.append(answerSheet);
       });
       elements.worksheets.append(fragment);
-      temporaryAnswerSheets = true;
     }
 
     document.documentElement.dataset.printMode = mode;
@@ -174,10 +170,7 @@
 
   function finishPrinting() {
     delete document.documentElement.dataset.printMode;
-    if (temporaryAnswerSheets) {
-      elements.worksheets.querySelectorAll('.temporary-print-sheet').forEach((sheet) => sheet.remove());
-      temporaryAnswerSheets = false;
-    }
+    elements.worksheets.querySelectorAll('.temporary-print-sheet').forEach((sheet) => sheet.remove());
   }
 
   elements.operationButtons.forEach((button) => {
