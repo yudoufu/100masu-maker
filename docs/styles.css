@@ -348,43 +348,6 @@ select:focus {
   line-height: 1.6;
 }
 
-.toggle-line {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-.switch {
-  width: 38px;
-  height: 22px;
-  padding: 3px;
-  border: 0;
-  border-radius: 20px;
-  background: #d8ded6;
-  transition: background 0.2s;
-}
-
-.switch::after {
-  display: block;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #fff;
-  box-shadow: 0 1px 3px #0002;
-  content: '';
-  transition: transform 0.2s;
-}
-
-.switch.on {
-  background: var(--accent);
-}
-
-.switch.on::after {
-  transform: translateX(16px);
-}
-
 .divider {
   height: 1px;
   margin: 19px 0;
@@ -437,6 +400,7 @@ select:focus {
 
 .actions {
   display: flex;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -461,20 +425,29 @@ select:focus {
   color: #fff;
 }
 
-#printBtn {
-  padding: 12px 20px;
-  font-size: 14px;
+.print-button {
+  padding: 12px 14px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.print-button.primary {
   box-shadow: 0 3px 0 var(--accent-dark);
 }
 
-#printBtn:hover {
+.print-button.primary:hover {
   transform: translateY(-1px);
   border-color: var(--accent-dark);
   background: var(--accent-dark);
   color: #fff;
 }
 
-#printBtn:active {
+.print-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.print-button:active:not(:disabled) {
   transform: translateY(2px);
   box-shadow: none;
 }
@@ -487,6 +460,10 @@ select:focus {
   border-radius: 10px;
   background: #fff;
   box-shadow: 0 6px 25px #2837230b;
+}
+
+.temporary-print-sheet {
+  display: none;
 }
 
 .sheet + .sheet {
@@ -555,6 +532,10 @@ select:focus {
   font-size: 16px;
 }
 
+.math-grid.dense .cell.corner {
+  font-size: 16px;
+}
+
 .cell {
   display: flex;
   min-width: 0;
@@ -576,7 +557,8 @@ select:focus {
 .cell.corner {
   background: var(--accent-corner);
   color: var(--accent);
-  font-size: 11px;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 .worksheet-meta {
@@ -668,7 +650,21 @@ select:focus {
   }
 
   .stage-head {
+    height: auto;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
     margin-top: 2px;
+  }
+
+  .actions {
+    width: 100%;
+  }
+
+  .print-button {
+    flex: 1;
+    padding: 10px 6px;
+    font-size: 12px;
   }
 }
 
@@ -741,6 +737,20 @@ select:focus {
 }
 
 @media print {
+  :root[data-print-mode='questions'] .answer-sheet,
+  :root[data-print-mode='answers'] .question-sheet {
+    display: none !important;
+  }
+
+  :root[data-print-mode='answers'] .question-sheet + .answer-sheet {
+    break-before: auto;
+    page-break-before: auto;
+  }
+
+  :root[data-print-mode='answers'] .temporary-print-sheet {
+    display: block;
+  }
+
   body {
     background: #fff;
   }
@@ -824,6 +834,10 @@ select:focus {
   }
 
   .cell.head {
+    font-size: 18pt;
+  }
+
+  .cell.corner {
     font-size: 18pt;
   }
 

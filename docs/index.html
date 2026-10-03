@@ -118,11 +118,6 @@
         </div>
 
         <div class="divider"></div>
-        <div class="toggle-line">
-          <span id="answerToggleLabel">答えもつくる</span>
-          <button class="switch" id="answerToggle" type="button" role="switch" aria-checked="false" aria-labelledby="answerToggleLabel"></button>
-        </div>
-        <div class="divider"></div>
         <button class="generate" id="generate" type="button">新しい問題をつくる　↗</button>
       </aside>
 
@@ -130,7 +125,8 @@
         <div class="stage-head">
           <div class="stage-title">プレビュー <span id="stageCount">1枚</span></div>
           <div class="actions">
-            <button class="btn primary" id="printBtn" type="button">印刷(横向き推奨)</button>
+            <button class="btn primary print-button" id="printQuestionsBtn" type="button">問題を印刷</button>
+            <button class="btn print-button" id="printAnswersBtn" type="button">答えを印刷</button>
           </div>
         </div>
         <div id="sheets"></div>
